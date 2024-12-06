@@ -1,0 +1,601 @@
+body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+        "header header header"
+        "nav nav nav"
+        "main main aside"
+        "footer footer footer";
+    height: 100vh;
+}
+
+@media (orientation: landscape) {
+    body {
+        background-color: silver;
+    }
+}
+
+@media (orientation: portrait) {
+    body {
+        background-color: blue;
+    }
+}
+
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .button-container {
+        bottom: 5px; /* Ajusta la posición desde la parte inferior */
+        right: 5px; /* Ajusta la posición desde la parte derecha */
+        gap: 5px; /* Espacio entre los botones */
+    }
+
+    .nav-button {
+        padding: 8px 16px; /* Ajusta el padding para pantallas más pequeñas */
+        min-width: 80px; /* Ancho mínimo del botón */
+    }
+}
+
+@media (max-width: 480px) {
+    .button-container {
+        bottom: 5px; /* Ajusta la posición desde la parte inferior */
+        right: 5px; /* Ajusta la posición desde la parte derecha */
+        gap: 5px; /* Espacio entre los botones */
+        flex-direction: column; /* Coloca los botones en una columna */
+        align-items: flex-end; /* Alinea los botones a la derecha */
+    }
+
+    .nav-button {
+        padding: 6px 12px; /* Ajusta el padding para pantallas más pequeñas */
+        min-width: 70px; /* Ancho mínimo del botón */
+    }
+}
+
+header {
+    grid-area: header;
+    text-align: center;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Superbanner {
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    height: 43px; /* Ajusta la altura */
+    border-radius: 0px;
+    background-color: rgb(22, 22, 22);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Superbanner p {
+    font-size: 16px; /* Ajusta el tamaño de la fuente */
+    color: rgb(255, 255, 255); /* Cambia el color del texto */
+    font-weight: bold; /* Hace el texto en negrita */
+    padding: 0px;
+}
+
+.Banner {
+    background-color: #91c27d; /* Color barra nav */
+    flex-grow: 1; /* Hace que .Banner ocupe el espacio restante */
+    position: relative; /* Asegura que los elementos absolutos se posicionen en relación a este contenedor */
+}
+.Logo {
+    cursor: pointer; /* Indica que es interactivo */
+    transition: transform 0.3s ease; /* Animación suave para el efecto de zoom */
+    width: 80px; /* Ajusta el tamaño según sea necesario */
+    height: 80px; /* Ajusta el tamaño según sea necesario */
+    border-radius: 50%;
+    position: absolute; /* Cambia la posición a absoluta */
+    top: 3px; /* Ajusta la posición desde la parte superior */
+    left: 55px; /* Ajusta la posición desde la parte izquierda */;
+    z-index: 10; /* Asegura que el logo se muestre por encima de otros elementos */
+}
+
+.Logo:hover {
+    transform: scale(1.2); /* Aumenta el tamaño del logo en un 20% */
+    z-index: 1500; /* Asegura que los resultados se superpongan a otros elementos */
+}
+
+.search-container {
+    position: relative; /* Asegura que los resultados se posicionen correctamente */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    width: 400px; /* Ajusta el ancho del buscador */
+    height: 18px; /* Ajusta la altura del buscador */
+    z-index: 1000; /* Asegura que el contenedor de búsqueda esté por encima de otros elementos */
+}
+
+.input-container {
+    
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    position: relative;
+}
+
+.icon {
+    
+    position: absolute;
+    right: 10px;
+    top: calc(50% + 5px);
+    transform: translateY(calc(-50% - 5px));
+}
+
+.input {
+    
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    transition: .2s linear;
+    border: 2.5px solid black;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.input:focus {
+    
+    outline: none;
+    border: 0.5px solid black;
+    box-shadow: -5px -5px 0px black;
+}
+
+.input-container:hover > .icon {
+    animation: anim 1s linear infinite;
+}
+
+@keyframes anim {
+    0%,
+    100% {
+        transform: translateY(calc(-50% - 5px)) scale(1);
+    }
+
+    50% {
+        transform: translateY(calc(-50% - 5px)) scale(1.1);
+    }
+}
+
+.search-results {
+    position: absolute;
+    top: 100%; /* Posiciona los resultados justo debajo del campo de entrada */
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1500; /* Asegura que los resultados se superpongan a otros elementos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade una sombra para mejor visibilidad */
+}
+
+.result-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.result-item:hover {
+    background-color: #f0f0f0;
+}
+
+.button-container {
+    z-index: 1500; /* Asegura que los resultados se superpongan a otros elementos */
+    position: absolute; /* Posiciona el contenedor de botones absolutamente dentro de .Banner */
+    bottom: 8px; /* Ajusta la posición desde la parte inferior */
+    right: 10px; /* Ajusta la posición desde la parte derecha */
+    display: flex; /* Utiliza flexbox para alinear los botones */
+    gap: 10px; /* Espacio entre los botones */
+}
+
+.nav-button, .dropbtn {
+    padding: 10px 20px; /* Espacio interno del botón */
+    background-color: rgb(111, 130, 102); /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s; /* Transición suave para el cambio de color de fondo */
+    position: relative; /* Necesario para el dropdown */
+    flex: 1; /* Permite que los botones crezcan para llenar el espacio disponible */
+    min-width: 100px; /* Ancho mínimo del botón */
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+.nav-button:hover, .dropbtn:hover {
+    background-color: rgb(91, 110, 82); /* Color de fondo al pasar el ratón sobre el botón */
+}
+
+.dropdown {
+    position: relative; /* Posiciona el contenedor del dropdown relativamente */
+    display: inline-block; /* Muestra el contenedor del dropdown como un bloque en línea */
+}
+
+.dropbtn {
+    background: none;
+    width: auto; /* Ajusta el ancho automáticamente */
+    height: auto; /* Ajusta la altura automáticamente */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px; /* Espacio interno del botón */
+    margin: 0; /* Elimina el margen */
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none; /* Oculta el contenido del dropdown por defecto */
+    position: absolute; /* Posiciona el contenido del dropdown absolutamente dentro del contenedor .dropdown */
+    background-color: white; /* Color de fondo del contenido del dropdown */
+    min-width: 160px; /* Ancho mínimo del contenido del dropdown */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Sombra del contenido del dropdown */
+    z-index: 1; /* Asegura que el contenido del dropdown se muestre sobre otros elementos */
+}
+
+.dropdown-content a {
+    color: black; /* Color del texto de los enlaces del dropdown */
+    padding: 12px 16px; /* Espacio interno de los enlaces del dropdown */
+    text-decoration: none; /* Sin subrayado en los enlaces */
+    display: block; /* Muestra los enlaces como bloques */
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(111, 130, 102); /* Color de fondo al pasar el ratón sobre los enlaces */
+    color: white; /* Color del texto al pasar el ratón sobre los enlaces */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Muestra el contenido del dropdown al pasar el ratón sobre el contenedor .dropdown */
+}
+
+nav {
+    grid-area: nav;
+    background-color: antiquewhite; /* Color de fondo específico para nav */
+    z-index: 500;
+    padding: 0px;
+    text-align: center;
+    height: 50vh;   
+
+}
+
+.carousel-nav {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carrusel {
+    min-width: 100%;
+    height: auto;
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    height: 50vh; /* Ajusta la altura al 40% del contenedor */
+    border-radius: 0px;
+}
+
+
+.carousel-nav .prev, .carousel-nav .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10; /* Asegura que los botones estén por encima de las imágenes */
+}
+
+.carousel-nav .prev {
+    left: 10px;
+}
+
+.carousel-nav .next {
+    right: 10px;
+}
+
+
+main {
+    grid-area: main;
+    background-color: rgb(231, 240, 239);
+    padding: 20px;
+    text-align: center;
+    height: auto; /* Ajusta la altura según sea necesario */
+}
+
+
+.product-carousel {
+    position: relative;
+    overflow: hidden;
+    height: 100%; /* Altura fija para las cartas */
+    
+}
+
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: calc(20% * 10); /* Ajusta el ancho total del contenedor */
+    height: 100%; /* Altura fija para las cartas */
+}
+
+.box {
+    position: relative; /* Asegura que los elementos absolutos se posicionen en relación a este contenedor */
+    ; /* Espacio horizontal entre las cartas */
+    flex: 0 0 10%; /* Cada caja ocupa el 20% del contenedor para mostrar 5 a la vez */
+    box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho y alto */
+    padding: 10px; /* Ajusta el padding interno de las cartas */
+    background-color: white; /* Fondo blanco para las cartas */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para las cartas */
+    text-align: center; /* Centra el texto dentro de las cartas */
+    width: 200px; /* Ancho fijo para las cartas */
+    height: 100%; /* Altura fija para las cartas */
+}
+
+.box img {
+    background-color: #ffffff;
+    width: 100%; /* Asegura que la imagen ocupe el 100% del ancho de la carta */
+    height: 150px; /* Establece una altura fija para las imágenes */
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+}
+
+.box p {
+    
+    font-size: 14px; /* Ajusta el tamaño de la fuente para el párrafo */
+    margin: 10px 0; /* Espacio vertical alrededor del párrafo */
+}
+
+.box h3 {
+    font-size: 16px; /* Ajusta el tamaño de la fuente para el encabezado */
+    margin: 10px 0; /* Espacio vertical alrededor del encabezado */
+}
+
+.box .price {
+    font-size: 18px; /* Ajusta el tamaño de la fuente para el precio */
+    color: #333; /* Color del texto del precio */
+    margin: 10px 0; /* Espacio vertical alrededor del precio */
+}
+
+.box .add-to-cart-btn {
+    display: inline-block;
+    padding: 10px 20px; /* Ajusta el padding del botón */
+    background-color: rgb(111, 130, 102); /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    text-decoration: none; /* Sin subrayado en el texto del botón */
+    border-radius: 5px; /* Bordes redondeados para el botón */
+    transition: background-color 0.3s; /* Transición suave para el cambio de color de fondo */
+    bottom: 10px;
+}
+
+.box .add-to-cart-btn {
+    position: absolute; /* Posiciona el botón absolutamente dentro de la carta */
+    bottom: 10px; /* Ajusta la posición desde la parte inferior */
+    left: 50%; /* Centra el botón horizontalmente */
+    transform: translateX(-50%); /* Ajusta la posición para centrar el botón */
+    display: inline-block;
+    padding: 10px 20px; /* Ajusta el padding del botón */
+    background-color: rgb(111, 130, 102); /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    text-decoration: none; /* Sin subrayado en el texto del botón */
+    border-radius: 5px; /* Bordes redondeados para el botón */
+    transition: background-color 0.3s; /* Transición suave para el cambio de color de fondo */
+}
+
+
+.box .add-to-cart-btn:hover {
+    background-color: rgb(91, 110, 82); /* Color de fondo al pasar el ratón sobre el botón */
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+aside {
+    grid-area: aside;
+    background-color: rgb(145, 194, 125);
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: auto; /* Ajusta la altura según sea necesario */
+    width: 100; /* Ajusta el ancho según sea necesario */
+    display: flex; /* Utiliza flexbox para centrar la imagen */
+}
+
+.publicidad {
+    max-width: 100%; /* Ajusta el ancho máximo de la imagen al 100% del contenedor */
+    max-height: 100%; /* Ajusta la altura máxima de la imagen al 100% del contenedor */
+    border-radius: 10px;
+}
+
+footer {
+    grid-area: footer;
+    background-color: rgb(247, 0, 255);
+    padding: 20px;
+    text-align: center;
+}
+
+/* Footer General */
+.footer {
+    width: 100%; /* Ocupa todo el ancho */
+    background-color: #559364;
+    color: #e7f0ef;
+    font-family: Arial, sans-serif;
+    padding: 40px 0; /* Aumenta el padding para más espacio */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Añade una sombra para darle profundidad */
+}
+
+/* Footer contenido principal */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px; /* Ancho máximo centrado */
+    margin: 0 auto;
+    padding: 0 20px; /* Espaciado lateral opcional */
+    flex-wrap: wrap; /* Permite que las secciones se envuelvan en pantallas más pequeñas */
+}
+
+/* Secciones */
+.footer-section {
+    flex: 1 1 30%;
+    margin: 20px; /* Aumenta el margen para más espacio entre secciones */
+    min-width: 200px; /* Ancho mínimo para las secciones */
+    text-align: center; /* Centra el contenido dentro de la sección */
+}
+
+.footer-section h2, .footer-section h3 {
+    color: #fff;
+    font-size: 24px; /* Aumenta el tamaño de la fuente */
+    margin-bottom: 15px; /* Aumenta el margen inferior */
+    border-bottom: 2px solid #e7f0ef; /* Añade una línea inferior */
+    padding-bottom: 5px; /* Añade padding inferior */
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px; /* Aumenta el margen inferior */
+}
+
+.footer-section ul li a {
+    color: #e7f0ef;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+    text-decoration: underline; /* Añade subrayado al pasar el ratón */
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espacio entre los iconos */
+    margin-top: 20px; /* Margen superior para separar del contenido anterior */
+}
+
+.footer-icon i {
+    font-size: 40px; /* Ajusta el tamaño del icono */
+    color: #e7f0ef; /* Color del icono */
+    transition: transform 0.3s; /* Transición suave para el efecto hover */
+}
+
+.footer-icon i:hover {
+    transform: scale(1.2); /* Aumenta el tamaño del icono en un 20% al pasar el ratón */
+}
+
+/* Suscripción */
+.footer-subscription {
+    text-align: center;
+    margin: 20px 0; /* Aumenta el margen vertical */
+}
+
+.subscription-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas más pequeñas */
+}
+
+.subscription-form input {
+    padding: 10px;
+    font-size: 16px; /* Aumenta el tamaño de la fuente */
+    border: 1px solid #e7f0ef;
+    border-right: none;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    margin-bottom: 10px; /* Añade margen inferior para pantallas pequeñas */
+    height: 40px; /* Altura fija para alinear con el botón */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
+}
+
+.subscription-form button {
+    margin-bottom: 10px; /* Añade margen inferior para pantallas pequeñas */
+    padding: 10px 20px;
+    font-size: 16px; /* Aumenta el tamaño de la fuente */
+    border: 1px solid #e7f0ef;
+    background-color: transparent;
+    color: #e7f0ef;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    height: 40px; /* Altura fija para alinear con el input */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
+}
+
+/* Cambiar el color del placeholder */
+.subscription-form input::placeholder {
+    color: #e7f0ef; /* Cambia el color del placeholder */
+    opacity: 1; /* Asegura que el color se aplique completamente */
+}
+
+.subscription-form button:hover {
+    background-color: #e7f0ef;
+    color: #000000;
+}
+
+/* Footer Inferior */
+.footer-bottom {
+    text-align: center;
+    font-size: 14px;
+    color: #e7f0ef;
+    margin-top: 20px; /* Añade margen superior */
+}
+
+.footer-bottom p a {
+    color: #e7f0ef;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s;
+}
+
+.footer-bottom p a:hover {
+    color: #fff;
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Coloca las secciones en una columna */
+        align-items: center; /* Centra las secciones */
+    }
+
+    .footer-section {
+        margin: 10px 0; /* Reduce el margen para pantallas más pequeñas */
+    }
+
+    .footer-section iframe {
+        width: 100%; /* Ajusta el ancho del iframe al 100% del contenedor */
+        height: auto; /* Ajusta la altura automáticamente */
+    }
+}

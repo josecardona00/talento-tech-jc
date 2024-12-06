@@ -1,0 +1,6 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../playfair-display/PlayfairDisplay-Black.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}

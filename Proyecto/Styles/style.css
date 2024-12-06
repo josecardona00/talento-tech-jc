@@ -1,0 +1,331 @@
+:root {
+    --background: hsl(0, 0%, 100%);
+    --foreground: hsl(240, 10%, 3.9%);
+    --card: hsl(0, 8%, 88%);
+    --card-foreground: hsl(240, 10%, 3.9%);
+    --primary: hsl(240, 5.9%, 10%);
+    --primary-foreground: hsl(0, 0%, 98%);
+    --secondary: hsl(240, 4.8%, 95.9%);
+    --secondary-foreground: hsl(240, 5.9%, 10%);
+    --muted-foreground: hsl(240, 3.8%, 46.1%);
+    --radius: 0.5rem;
+  }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+  
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  .product-image {
+    width: 100%;
+    height: auto;
+    background-color: var(--secondary);
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-foreground);
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.product-image img {
+  max-width: 20%;
+  height: auto;
+  border-radius: var(--radius);
+}
+  
+  .text-center {
+    text-align: center;
+  }
+
+  .mb-8 {
+    margin-bottom: 2rem;
+  }
+  .mb-6 {
+    margin-bottom: 1.5rem;
+  }
+  .mb-12 {
+    margin-bottom: 3rem;
+  }
+  .text-3xl {
+    font-size: 2rem;
+  }
+  .font-bold {
+    font-weight: bold;
+  }
+  .text-primary {
+    color: var(--primary);
+    font-size: 1.125rem;
+    margin: 10px 0;
+  }
+  .flex {
+    display: flex;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .space-x-4 > *:not(:last-child) {
+    margin-right: 1rem;
+  }
+  .bg-secondary {
+    background-color: var(--secondary);
+  }
+  .text-secondary-foreground {
+    color: var(--secondary-foreground);
+  }
+  .p-2 {
+    padding: 0.5rem;
+  }
+  .rounded {
+    border-radius: var(--radius);
+  }
+  .hover-bg-secondary-80:hover {
+    background-color: hsl(240, 4.8%, 90%);
+  }
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+  .font-semibold {
+    font-weight: 600;
+  }
+  .w-full {
+    width: 100%;
+  }
+  .rounded-lg {
+    border-radius: 0.75rem;
+  }
+  .text-muted-foreground {
+    color: var(--muted-foreground);
+  }
+  .mt-4 {
+    margin-top: 1rem;
+  }
+  .text-lg {
+    font-size: 1.125rem;
+  }
+  .bg-card {
+    align-items: center;
+    width: 500px;
+    background-color: var(--card);
+    padding: 1rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 0 auto; /* Centra la carta horizontalmente */
+  }
+  .p-4 {
+    padding: 1rem;
+  }
+  .bg-primary {
+    background-color: var(--primary);
+  }
+  .text-primary-foreground {
+    color: var(--primary-foreground);
+  }
+
+  footer {
+    grid-area: footer;
+    background-color: rgb(247, 0, 255);
+    padding: 20px;
+    text-align: center;
+}
+
+/* Footer General */
+.footer {
+    width: 100%; /* Ocupa todo el ancho */
+    background-color: #559364;
+    color: #e7f0ef;
+    font-family: Arial, sans-serif;
+    padding: 40px 0; /* Aumenta el padding para más espacio */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Añade una sombra para darle profundidad */
+}
+
+/* Footer contenido principal */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px; /* Ancho máximo centrado */
+    margin: 0 auto;
+    padding: 0 20px; /* Espaciado lateral opcional */
+    flex-wrap: wrap; /* Permite que las secciones se envuelvan en pantallas más pequeñas */
+}
+
+/* Secciones */
+.footer-section {
+    flex: 1 1 30%;
+    margin: 20px; /* Aumenta el margen para más espacio entre secciones */
+    min-width: 200px; /* Ancho mínimo para las secciones */
+    text-align: center; /* Centra el contenido dentro de la sección */
+}
+
+.footer-section h2, .footer-section h3 {
+    color: #fff;
+    font-size: 24px; /* Aumenta el tamaño de la fuente */
+    margin-bottom: 15px; /* Aumenta el margen inferior */
+    border-bottom: 2px solid #e7f0ef; /* Añade una línea inferior */
+    padding-bottom: 5px; /* Añade padding inferior */
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px; /* Aumenta el margen inferior */
+}
+
+.footer-section ul li a {
+    color: #e7f0ef;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+    text-decoration: underline; /* Añade subrayado al pasar el ratón */
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espacio entre los iconos */
+    margin-top: 20px; /* Margen superior para separar del contenido anterior */
+}
+
+.footer-icon i {
+    font-size: 40px; /* Ajusta el tamaño del icono */
+    color: #e7f0ef; /* Color del icono */
+    transition: transform 0.3s; /* Transición suave para el efecto hover */
+}
+
+.footer-icon i:hover {
+    transform: scale(1.2); /* Aumenta el tamaño del icono en un 20% al pasar el ratón */
+}
+
+/* Suscripción */
+.footer-subscription {
+    text-align: center;
+    margin: 20px 0; /* Aumenta el margen vertical */
+}
+
+.subscription-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas más pequeñas */
+}
+
+.subscription-form input {
+    padding: 10px;
+    font-size: 16px; /* Aumenta el tamaño de la fuente */
+    border: 1px solid #e7f0ef;
+    border-right: none;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    margin-bottom: 10px; /* Añade margen inferior para pantallas pequeñas */
+    height: 40px; /* Altura fija para alinear con el botón */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
+}
+
+.subscription-form button {
+    margin-bottom: 10px; /* Añade margen inferior para pantallas pequeñas */
+    padding: 10px 20px;
+    font-size: 16px; /* Aumenta el tamaño de la fuente */
+    border: 1px solid #e7f0ef;
+    background-color: transparent;
+    color: #e7f0ef;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    height: 40px; /* Altura fija para alinear con el input */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
+}
+
+/* Cambiar el color del placeholder */
+.subscription-form input::placeholder {
+    color: #e7f0ef; /* Cambia el color del placeholder */
+    opacity: 1; /* Asegura que el color se aplique completamente */
+}
+
+.subscription-form button:hover {
+    background-color: #e7f0ef;
+    color: #000000;
+}
+
+/* Footer Inferior */
+.footer-bottom {
+    text-align: center;
+    font-size: 14px;
+    color: #e7f0ef;
+    margin-top: 20px; /* Añade margen superior */
+}
+
+.footer-bottom p a {
+    color: #e7f0ef;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s;
+}
+
+.footer-bottom p a:hover {
+    color: #fff;
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Coloca las secciones en una columna */
+        align-items: center; /* Centra las secciones */
+    }
+
+    .footer-section {
+        margin: 10px 0; /* Reduce el margen para pantallas más pequeñas */
+    }
+
+    .footer-section iframe {
+        width: 100%; /* Ajusta el ancho del iframe al 100% del contenedor */
+        height: auto; /* Ajusta la altura automáticamente */
+    }
+}
+
+.bg-card img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+}
+
+.small-img {
+    width: 50px; /* Ajusta el tamaño de la imagen pequeña */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 1.125rem;
+    color: var(--primary);
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: hsl(240, 5.9%, 20%);
+}
